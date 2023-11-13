@@ -1,0 +1,42 @@
+{
+  "version": 1.0,
+  "startingPose": null,
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Part 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoIntakeCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Part 2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "AutoIntakeCommand"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Part 3"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null
+}
