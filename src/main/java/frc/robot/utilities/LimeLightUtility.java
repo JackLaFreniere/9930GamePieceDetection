@@ -9,13 +9,11 @@ public class LimeLightUtility {
     private String m_LimeLightName;
     private NetworkTableInstance m_networkTable = NetworkTableInstance.getDefault();
 
-    public LimeLightUtility(String LimeLightName) {
-        m_LimeLightName = LimeLightName;
+    public LimeLightUtility() {
     }
 
     public double get_tx(String m_LimeLightName) {
-        return 1.0;
-        // return LimelightHelpers.getTX(m_LimeLightName);
+        return LimelightHelpers.getTX(m_LimeLightName);
     }
 
     public double get_ty(String m_LimeLightName) {

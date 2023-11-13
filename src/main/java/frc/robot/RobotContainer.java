@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autos.AutoCommandManager;
 import frc.robot.autos.AutoCommandManager.subNames;
 import frc.robot.commands.AutoBalanceCommand;
+import frc.robot.commands.LimeLightIntakeCommand;
 import frc.robot.commands.SwerveLockCommand;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.simulation.FieldSim;
@@ -33,6 +34,7 @@ import frc.robot.subsystems.arm.ArmSubsystem;
 import frc.robot.subsystems.manipulator.ManipulatorIORobot;
 import frc.robot.subsystems.manipulator.ManipulatorSubsystem;
 import frc.robot.utilities.CommandFactoryUtility;
+import frc.robot.utilities.LimeLightUtility;
 import frc.robot.utilities.RobotInformation;
 // import frc.robot.utilities.TimeOfFlightUtility;
 import frc.robot.utilities.RobotInformation.WhichRobot;
@@ -97,7 +99,8 @@ public class RobotContainer {
   // Utilities \\
   // private final TimeOfFlightUtility m_timeOfFlight = new TimeOfFlightUtility(1);
   private TargetScorePositionUtility m_targetScorePositionUtility = new TargetScorePositionUtility();
-  
+  private LimeLightUtility m_limeLightUtility = new LimeLightUtility();
+
   // Commands \\
   //private final RotateCommand m_rotateCommand = new RotateCommand(new Pose2d( 8.2423, 4.0513, new Rotation2d(0.0)), m_robotDrive);
   private final AutoBalanceCommand m_autoBalanceCommand = new AutoBalanceCommand(m_robotDrive);
@@ -195,7 +198,9 @@ public class RobotContainer {
     m_driverController.rightTrigger()
       .onTrue(CommandFactoryUtility.createMaxSpeedCommand(m_manipulatorSubsystem))
       .onFalse(CommandFactoryUtility.createHoldSpeedCommand(m_manipulatorSubsystem));
-   
+
+    m_driverController.leftBumper()
+      .whileTrue(new LimeLightIntakeCommand(m_robotDrive, m_limeLightUtility,""));   
   }
 
   void checkDSUpdate() {

@@ -29,8 +29,9 @@ public class LimeLightIntakeCommand extends CommandBase {
 
     private PIDController pid = new PIDController(0.0, 0.0, 0.0);
 
-    public LimeLightIntakeCommand(SwerveDrive swerveDrive, String limeLightName) {
+    public LimeLightIntakeCommand(SwerveDrive swerveDrive, LimeLightUtility limeLight, String limeLightName) {
         m_SwerveDrive = swerveDrive;
+        m_LimeLight = limeLight;
         m_LimeLightName = limeLightName;
         addRequirements(m_SwerveDrive);
     }
