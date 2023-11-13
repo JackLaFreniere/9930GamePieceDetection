@@ -14,7 +14,7 @@ public class LimeLightUtility {
     }
 
     public double get_tx(String m_LimeLightName) {
-        return 10.0;
+        return 1.0;
         // return LimelightHelpers.getTX(m_LimeLightName);
     }
 
