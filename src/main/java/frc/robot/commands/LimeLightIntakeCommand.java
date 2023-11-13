@@ -21,7 +21,7 @@ public class LimeLightIntakeCommand extends CommandBase {
 
     private static double kDt = 0.0;
     private final TrapezoidProfile.Constraints m_constraints =
-        new TrapezoidProfile.Constraints(1.0, 1.0);
+        new TrapezoidProfile.Constraints(0.5, 0.5);
     private TrapezoidProfile.State m_goal = new TrapezoidProfile.State(Units.feetToMeters(3.0), 0);
     private TrapezoidProfile.State m_setpoint = new TrapezoidProfile.State(0,0);
 
