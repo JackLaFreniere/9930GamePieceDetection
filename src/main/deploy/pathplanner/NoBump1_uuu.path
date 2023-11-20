@@ -24,17 +24,17 @@
     },
     {
       "anchorPoint": {
-        "x": 6.2,
+        "x": 6.1,
         "y": 4.5905055912675925
       },
       "prevControl": {
-        "x": 5.2,
+        "x": 5.1,
         "y": 4.5905055912675925
       },
       "nextControl": null,
-      "holonomicAngle": 0,
+      "holonomicAngle": 90.0,
       "isReversal": false,
-      "velOverride": null,
+      "velOverride": 1.0,
       "isLocked": false,
       "isStopPoint": false,
       "stopEvent": {
@@ -45,5 +45,12 @@
       }
     }
   ],
-  "markers": []
+  "markers": [
+    {
+      "position": 0.5,
+      "names": [
+        "intakeCube"
+      ]
+    }
+  ]
 }

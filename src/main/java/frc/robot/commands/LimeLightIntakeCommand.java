@@ -4,6 +4,7 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.LimelightHelpers;
 import frc.robot.subsystems.SwerveDrive;
@@ -22,7 +23,7 @@ public class LimeLightIntakeCommand extends CommandBase {
     private static double kDt = 0.0;
     private final TrapezoidProfile.Constraints m_constraints =
         new TrapezoidProfile.Constraints(0.5, 0.5);
-    private TrapezoidProfile.State m_goal = new TrapezoidProfile.State(Units.feetToMeters(3.0), 0);
+    private TrapezoidProfile.State m_goal = new TrapezoidProfile.State(1, 0);
     private TrapezoidProfile.State m_setpoint = new TrapezoidProfile.State(0,0);
 
     private TrapezoidProfile profile = new TrapezoidProfile(m_constraints, m_goal, m_setpoint);
@@ -42,7 +43,7 @@ public class LimeLightIntakeCommand extends CommandBase {
         
         m_setpoint = profile.calculate(kDt);
         m_throttle = m_setpoint.velocity;
-        kDt = kDt + 0.02;
+        kDt += 0.02;
 
         m_SwerveDrive.drive(m_throttle, m_strafe, 0.0, false, true);
     }

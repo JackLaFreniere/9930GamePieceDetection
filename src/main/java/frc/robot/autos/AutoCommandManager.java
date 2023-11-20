@@ -138,11 +138,17 @@ public class AutoCommandManager {
         );
 
         Command VisionTestPath = new PathPlannerCommand(
+            s_SwerveDrive,
             CommandFactoryUtility.createScoreHighCommand(m_armSubsystem, m_manipulatorSubsystem)
             .andThen(new WaitCommand(1.0))
             .andThen(CommandFactoryUtility.createStowArmCommand(m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem)), 
-            s_SwerveDrive, "NoBump_uu", eventCommandMap, 
-            CommandFactoryUtility.createAutoIntakecommand(s_SwerveDrive, m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem)
+                "NoBump1_uuu", null,
+                // CommandFactoryUtility.createAutoIntakecommand(s_SwerveDrive, m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem),
+                "NoBump2_uuu", null,
+                // CommandFactoryUtility.createAutoIntakecommand(s_SwerveDrive, m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem),
+                "NoBump3_uuu",
+                null,
+                eventCommandMap
         );
 
 
@@ -153,7 +159,7 @@ public class AutoCommandManager {
         m_chooser.addOption("HighScoreBumpMobility_u", HighScoreBumpMobilityCommand);
         m_chooser.addOption("TwoScoreBump_uu", TwoScoreBumpCommand);
         m_chooser.addOption("TwoScoreAndPickupBump_uuu", TwoScoreAndPickupBumpCommand);
-        m_chooser.addOption("NoBump_uu", VisionTestPath);
+        m_chooser.addOption("NoBump_uuu", VisionTestPath);
 
         //Adding chooser to Shuffleboard/Smartdashboard
         SmartDashboard.putData("Auto choices", m_chooser);

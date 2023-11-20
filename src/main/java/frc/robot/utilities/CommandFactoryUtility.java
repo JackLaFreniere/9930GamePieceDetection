@@ -149,7 +149,6 @@ public class CommandFactoryUtility {
 
         command = 
             createIntakeCommand(m_ArmSubsystem, m_ManipulatorSubsystem, m_TopRollerSubsystem)
-            .andThen(m_ArmSubsystem.createWaitUntilAtAngleCommand())
             .andThen(new LimeLightIntakeCommand(m_SwerveDrive, new LimeLightUtility(), ""))
             .andThen(createStowArmCommand(m_ArmSubsystem, m_ManipulatorSubsystem, m_TopRollerSubsystem));
 
