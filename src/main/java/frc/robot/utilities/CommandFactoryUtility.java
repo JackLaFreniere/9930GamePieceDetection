@@ -143,13 +143,15 @@ public class CommandFactoryUtility {
         SwerveDrive m_SwerveDrive,
         ArmSubsystem m_ArmSubsystem,
         ManipulatorSubsystem m_ManipulatorSubsystem,
-        TopRollerSubsystem m_TopRollerSubsystem
+        TopRollerSubsystem m_TopRollerSubsystem,
+        double m_pointX,
+        double m_pointY
     ) {
         Command command;
 
         command = 
             createIntakeCommand(m_ArmSubsystem, m_ManipulatorSubsystem, m_TopRollerSubsystem)
-            .andThen(new LimeLightIntakeCommand(m_SwerveDrive, new LimeLightUtility(), ""))
+            .andThen(new LimeLightIntakeCommand(m_SwerveDrive, new LimeLightUtility(), "", m_pointX, m_pointY))
             .andThen(createStowArmCommand(m_ArmSubsystem, m_ManipulatorSubsystem, m_TopRollerSubsystem));
 
         return command;

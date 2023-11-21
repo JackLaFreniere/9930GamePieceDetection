@@ -200,7 +200,7 @@ public class RobotContainer {
       .onFalse(CommandFactoryUtility.createHoldSpeedCommand(m_manipulatorSubsystem));
 
     m_driverController.leftBumper()
-      .whileTrue(new LimeLightIntakeCommand(m_robotDrive, m_limeLightUtility,""));   
+      .whileTrue(new LimeLightIntakeCommand(m_robotDrive, m_limeLightUtility, "", 7.08, 4.59));   
   }
 
   void checkDSUpdate() {

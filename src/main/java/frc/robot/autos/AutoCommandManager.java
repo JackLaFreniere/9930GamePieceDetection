@@ -142,10 +142,10 @@ public class AutoCommandManager {
             CommandFactoryUtility.createScoreHighCommand(m_armSubsystem, m_manipulatorSubsystem)
             .andThen(new WaitCommand(1.0))
             .andThen(CommandFactoryUtility.createStowArmCommand(m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem)), 
-                "NoBump1_uuu", null,
-                // CommandFactoryUtility.createAutoIntakecommand(s_SwerveDrive, m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem),
-                "NoBump2_uuu", null,
-                // CommandFactoryUtility.createAutoIntakecommand(s_SwerveDrive, m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem),
+                "NoBump1_uuu", //null,
+                CommandFactoryUtility.createAutoIntakecommand(s_SwerveDrive, m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem, 7.08, 4.59),
+                "NoBump2_uuu", //null,
+                CommandFactoryUtility.createAutoIntakecommand(s_SwerveDrive, m_armSubsystem, m_manipulatorSubsystem, m_topRollerSubsystem, 7.08, 3.37),
                 "NoBump3_uuu",
                 null,
                 eventCommandMap
