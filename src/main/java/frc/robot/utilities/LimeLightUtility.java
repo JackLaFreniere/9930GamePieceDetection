@@ -1,4 +1,6 @@
 package frc.robot.utilities;
+import org.littletonrobotics.junction.Logger;
+
 import frc.robot.LimelightHelpers;
 
 public class LimeLightUtility {
@@ -6,6 +8,7 @@ public class LimeLightUtility {
     public LimeLightUtility() {}
 
     public double get_tx(String m_LimeLightName) {
+        Logger.getInstance().recordOutput("tx", LimelightHelpers.getTX(m_LimeLightName));
         return LimelightHelpers.getTX(m_LimeLightName);
     }
 

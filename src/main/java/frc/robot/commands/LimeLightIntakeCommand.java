@@ -1,5 +1,7 @@
 package frc.robot.commands;
 
+import org.littletonrobotics.junction.Logger;
+
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
@@ -26,7 +28,7 @@ public class LimeLightIntakeCommand extends CommandBase {
 
     private double m_distance;
 
-    private double m_MaxStrafe = 0.1; //TODO tune this value on the robot
+    private double m_MaxStrafe = 1.0; //TODO tune this value on the robot. Tune PID value first and set this value as a hard stop to prevent outlying data
     
     private double m_throttle;
     private double m_strafe;
@@ -38,6 +40,9 @@ public class LimeLightIntakeCommand extends CommandBase {
     private TrapezoidProfile.State m_goal;
     private TrapezoidProfile.State m_setpoint;
     private TrapezoidProfile profile;
+
+    PIDController pid = new PIDController(0.0, 0.0, 0.0); //(0.01, 0.0, 0.0); //TODO tune this value
+
 
     /**
      * <h3>LimeLightIntakeCommand</h3>
@@ -81,8 +86,8 @@ public class LimeLightIntakeCommand extends CommandBase {
 
     @Override
     public void execute() {
-        m_strafe = MathUtil.clamp(-m_LimeLight.get_tx(m_LimeLightName), -m_MaxStrafe, m_MaxStrafe);
-        
+        m_strafe = MathUtil.clamp(pid.calculate(m_LimeLight.get_tx(m_LimeLightName), 0.0), -m_MaxStrafe, m_MaxStrafe);
+        Logger.getInstance().recordOutput("m_strafe", m_strafe);
         m_setpoint = profile.calculate(kDt);
         m_throttle = m_setpoint.velocity;
         kDt += 0.02;
